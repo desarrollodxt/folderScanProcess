@@ -1,0 +1,21 @@
+{
+  "name": "foltercomponent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "devf": "node index.js"
+  },
+  "author": "Luis Mendoza <desarrollo@dxt.com.mx>",
+  "license": "ISC",
+  "dependencies": {
+    "csv": "^6.3.1",
+    "csv-parser": "^3.0.0",
+    "dotenv": "^16.1.4",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
