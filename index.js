@@ -238,7 +238,8 @@ function procesarArchivo(archivoPath) {
         rows.push(row);
       })
       .on("end", async () => {
-        let sql = "DELETE FROM diesel_monitor_report";
+        let sql =
+          "DELETE FROM diesel_monitor_report where month(invoice_date) = month(now()) and year(invoice_date) = year(now())";
         await connection.query(sql, function (err, result) {
           if (err) throw err;
           console.log("Tabla borrada");
@@ -247,6 +248,16 @@ function procesarArchivo(archivoPath) {
         for (const row of rows) {
           await insertRow(row);
         }
+
+        await connection.query(
+          "INSERT INTO `logs_sync`(`type`) VALUES('fuel');",
+          function (error, results, fields) {
+            if (error) {
+              console.error("Error al ejecutar la consulta:", error);
+              return;
+            }
+          }
+        );
         connection.end();
 
         resolve();
