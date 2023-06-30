@@ -14,7 +14,7 @@ const connection = mysql.createConnection({
   database: process.env.DB_NAME,
 });
 
-const folderPath = path.join(__dirname, process.env.PATH_FOLDER);
+const folderPath = process.env.PATH_FOLDER;
 function formatoToFLoatNumber(Number) {
   let result = parseFloat(Number.replace("$", "").replace(",", ""));
   if (isNaN(result)) {
